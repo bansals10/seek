@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset= "utf-8">
+    <title>SEEK Financial Literacy</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+
+    <script>
+      function set_user_choice(choice)
+      {
+        user_choice = choice;
+        if(user_choice == ROCK)
+        {
+          document.getElementById("user").innerHTML = "User chose: Rock";
+        }
+        else if(user_choice == PAPER)
+        {
+          document.getElementById("user").innerHTML = "User chose: Paper";
+        }
+        else
+        {
+          document.getElementById("user").innerHTML = "User chose: Scissors";
+        }
+      }
+    </script>
+  </head>
+
+
+  <body>
+    <nav>
+        <a href="./home.html">Home</a>
+        <a href="./index.html">Menu</a>
+    </nav>
+  </body>
+</html>
