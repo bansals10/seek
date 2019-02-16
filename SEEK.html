@@ -3,8 +3,40 @@
   <head>
     <meta charset= "utf-8">
     <title>SEEK Financial Literacy</title>
-    <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="SEEK.css" type="text/css" rel="stylesheet">
+    <style>
+    body {margin:0;}
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
 
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 20px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #ffc100;
+      }
+    </style>
     <script>
       function set_user_choice(choice)
       {
@@ -28,8 +60,12 @@
 
   <body>
     <nav>
-        <a href="./home.html">Home</a>
-        <a href="./index.html">Menu</a>
+      <ul>
+        <li><a class="active" href="./SEEK.html">Home</a></li>
+        <li><a href="./play.html">Play</a></li>
+        <li><a href="./learn.html">Learn</a></li>
+        <li style="float:right"><a href="./account.html">User</a></li>
+      </ul>
     </nav>
   </body>
 </html>
