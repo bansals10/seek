@@ -23,7 +23,7 @@
       <label id="minutes">00</label>:<label id="seconds">00</label>
       </div>
       <div class="question-set" id=1 style="display: block;">
-        <h2 class="question">1. What is a mortgage?</h2>
+        <h2 class="testQ">What is a mortgage?</h2>
         <div class="choices">
           <div class="choice" id=0>a) A loan to help pay off the hundreds of thousands you owe in student debt</div>
           <div class="choice" id=0>b) A retirement plan so you can live the rest of your life in peace, isolated from the rest of the world</div>
@@ -33,7 +33,7 @@
       </div>
 
       <div class="question-set" id=2>
-        <h2 class="question">2. Why is a good credit score important?</h2>
+        <h2 class="testQ">Why is a good credit score important?</h2>
         <div class="choices">
           <div class="choice" id=0>a) Credit scores are a scam by the US government in order to swamp everyone in debt</div>
           <div class="choice" id=0>b) Having a good credit score will give you a tax deduction</div>
@@ -43,7 +43,7 @@
       </div>
 
       <div class="question-set" id=3>
-        <h2 class="question">3. As a poor college student, what type of tax is most injurious to your wallet?</h2>
+        <h2 class="testQ">As a poor college student, what type of tax is most injurious to your wallet?</h2>
         <div class="choices">
           <div class="choice" id=0>a) Progressive tax</div>
           <div class="choice" id=1>b) Regressive tax</div>
@@ -53,7 +53,7 @@
       </div>
 
       <div class="question-set" id=4>
-        <h2 class="question">4. What is important to consider before taking out a loan?</h2>
+        <h2 class="testQ">What is important to consider before taking out a loan?</h2>
         <div class="choices">
           <div class="choice" id=0>a) Picking a loan with a high interest rate, so the bank will pay you money</div>
           <div class="choice" id=0>b) Borrowing money that you can’t pay back, because debt is fun</div>
@@ -63,7 +63,7 @@
       </div>
 
       <div class="question-set" id=5>
-        <h2 class="question">5. Before filing taxes, what should you do?</h2>
+        <h2 class="testQ">Before filing taxes, what should you do?</h2>
         <div class="choices">
           <div class="choice" id=0>a) Call your parents to ask if you are a dependant under their name</div>
           <div class="choice" id=0>b) Find your W2 and 1098-T/1099 papers</div>
@@ -73,7 +73,7 @@
       </div>
 
       <div class="question-set" id=6>
-        <h2 class="question">6. What document contains information about yearly income and withheld taxes?</h2>
+        <h2 class="testQ">What document contains information about yearly income and withheld taxes?</h2>
         <div class="choices">
           <div class="choice" id=1>a) W2</div>
           <div class="choice" id=0>b) W4</div>
@@ -83,7 +83,7 @@
       </div>
 
       <div class="question-set" id=7>
-        <h2 class="question">7. Under what income do you not have to file taxes?</h2>
+        <h2 class="testQ">Under what income do you not have to file taxes?</h2>
         <div class="choices">
           <div class="choice" id=0>a) $6,000</div>
           <div class="choice" id=1>b) $12,000</div>
@@ -93,7 +93,7 @@
       </div>
 
       <div class="question-set" id=8>
-        <h2 class="question">8. What type of bank account do you use to deposit and withdraw money in everyday life?</h2>
+        <h2 class="testQ">8. What type of bank account do you use to deposit and withdraw money in everyday life?</h2>
         <div class="choices">
           <div class="choice" id=0>a) Savings account</div>
           <div class="choice" id=1>b) Checking account</div>
@@ -103,7 +103,7 @@
       </div>
 
       <div class="question-set" id=9>
-        <h2 class="question">9. What is a 401K plan?</h2>
+        <h2 class="testQ">What is a 401K plan?</h2>
         <div class="choices">
           <div class="choice" id=0>a) A plan to help pay for your college education</div>
           <div class="choice" id=0>b) A loan to pay for a house</div>
@@ -112,6 +112,13 @@
         </div>
       </div>
     </div>
+
+    <img src="taxes.gif" id="sprite">
+    <a href="game2.html"><div id="tax-defeat">
+      <p>You've defeated all of the tax forms!</p>
+      <p>On to the next enemy!</p>
+      </div></a>
+
     <script>
     var minutesLabel = document.getElementById("minutes");
     var secondsLabel = document.getElementById("seconds");
@@ -125,9 +132,9 @@
 
       if(integerIndex <= 9) {
       $(prevSet).fadeOut();
-      $(nextSet).delay(400).css("background-color", rgba(0, 0, 0, 0.75));
+      $(nextSet).delay(400).fadeIn();
       } else {
-        alert("You've defeated all of the tax forms! On to the next enemy!")
+        $(#tax-defeat).toggle();
       }
     }
 
@@ -138,7 +145,7 @@
         nextTest(index);
         minutesLabel = 00;
         secondsLabel = 00;
-        totalSeconds = 0
+        totalSeconds = 0;
         setInterval(setTime,1000);
       } else {
         alert("wrong :(");
