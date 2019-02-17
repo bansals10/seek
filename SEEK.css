@@ -12,12 +12,13 @@ p, li, div {
 body { margin: 0; }
 
 .background {
-  position: block;
+  top: 0;
+  position: absolute;
   width:100%;
-  height:100%
+  height:auto;
   object-fit: 100%;
   background-repeat: no-repeat;
-  z-index= -1;
+  z-index: -1;
 }
 
 nav ul {
@@ -54,70 +55,28 @@ nav li a {
 nav li a:hover:not(.active) { background-color: #111; }
 .active { background-color: #ffc100; }
 
-
-/* PLAY */
-
-.timer { position: fixed; left: 20%; margin-top:150px; color: white; z-index: 1; font-size: 20px;}
-
-.question-set {
-    width: 30%;
-    position: fixed;
-    left: 80px;
-    top:200px;
-    padding: 20px;
-    display: none;
-    color:white;
-    background-color:rgba(0, 0, 0, 0.9);
-  }
-
-.testQ { text-align: center; }
-
-.multi-choice h2 {font-family: 'Press Start 2P', sans-serif; opacity:1;}
-
-.choice, #tax-defeat p {
-    cursor: pointer;
-    padding: 10px;
-    margin: 20px;
-    color: white;
-  }
-
-.choice:hover { color: #E80C7A; }
-
-#sprite {position: fixed; left: 40%; top: 30%; width:700px; height:700px;}
-
-#tax-defeat {
-  width: 30%;
-  position: fixed;
-  left: 30%;
-  top:200px;
-  padding: 20px;
-  display: none;
-  color:white;
-  background-color:rgba(0, 0, 0, 0.9);
-  text-align:center;
-}
-
-#play-background { position: fixed; }
-
 /* HOME */
 
 .title p {
-  margin: auto;
-  position: absolute;
+  padding: 2px;
   color: white;
+  z-index: 1;
 }
 
 #SEEK {
-  top: 100px;
-  left: 42%;
-  color: white;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-top:100px;
+  padding-left:  42%;
   font-size: 35px;
   font-family: 'Press Start 2P', sans-serif;
+  z-index: 2;
 }
 
+
 #subtitle{
-  top: 150px;
-  left: 43%;
+  padding-bottom: 5px;
+  left: 44%;
   font-size: 20px;
   text-align: center;
   letter-spacing: 1px;
@@ -125,8 +84,8 @@ nav li a:hover:not(.active) { background-color: #111; }
 }
 
 #motto {
-  top: 200px;
-  left: 38%;
+  top: 210px;
+  margin-left: 36%;
 }
 
 #mon1 { position: absolute; left: 400px; top: 1100px; }
@@ -182,3 +141,99 @@ border-right: solid 1px black;
 }
 
 #sidebar li a:hover { background-color: transparent; color: gray; }
+
+/* GAME 1 */
+
+.timer { position: fixed; left: 20%; margin-top:150px; color: white; z-index: 1; font-size: 20px;}
+
+.question-set {
+    width: 30%;
+    position: fixed;
+    left: 80px;
+    top:200px;
+    padding: 20px;
+    display: none;
+    color:white;
+    background-color:rgba(0, 0, 0, 0.9);
+  }
+
+.testQ { text-align: center; }
+
+.multi-choice h2 {font-family: 'Press Start 2P', sans-serif; opacity:1;}
+
+.choice, #tax-defeat p {
+    cursor: pointer;
+    padding: 10px;
+    margin: 20px;
+    color: white;
+  }
+
+.choice:hover { color: #E80C7A; }
+
+#sprite {position: fixed; left: 40%; top: 30%; width:700px; height:700px;}
+
+#tax-defeat {
+  width: 30%;
+  position: fixed;
+  left: 30%;
+  top:200px;
+  padding: 20px;
+  display: none;
+  color:white;
+  background-color:rgba(0, 0, 0, 0.9);
+  text-align:center;
+}
+
+#play-background { position: fixed; }
+
+/* GAME 2 */
+
+canvas {
+  top: 100px;
+  border:1px solid #d3d3d3;
+  background-color: lightblue;
+}
+
+.top-left {
+  position: absolute;
+  top: 30px;
+  left: 320px;
+  color: black;
+  font-size: 40px;
+	font-family: 'Press Start 2P';
+}
+
+.multi-choice-2 {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  color: black;
+  font-size: 10px;
+	font-family: 'Press Start 2P';
+}
+
+.question-set-2{
+  display: none;
+}
+
+/* GAME 3 */
+#game3-text { text-align: center; margin-top: 100px; }
+
+input { padding: 10px; }
+
+#form1 { margin: 30px; font-size: 20px;}
+
+#prompt { font-size: 30px; font-weight: 200px;}
+
+#uniq { margin: 10px; }
+
+.button {
+  border: none;
+  padding: 10px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover { background-color: #333; }
