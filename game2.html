@@ -3,6 +3,7 @@
 <head>
   <title> Catch the form! </title>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
 
@@ -42,13 +43,7 @@ canvas {
 
 <div class="multi-choice">
   <div class="question-set" id=1 style="display: block;">
-    <h2 class="question">1. What document contains information about yearly income and withheld taxes?</h2>
-    <div class="choices">
-      <div class="choice" id=1>a) W2</div>
-      <div class="choice" id=0>b) W4</div>
-      <div class="choice" id=0>c) 1040A</div>
-      <div class="choice" id=0>d) 1099</div>
-    </div>
+    <h2 class="question">What document contains information about yearly income and withheld taxes?</h2>
   </div>
 
   <div class="question-set" id=2>
@@ -72,8 +67,8 @@ var myObstacles4 = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = new component(60, 60, "avatar.png", 400, 590, "image");
-    myScore = new component("30px", "Consolas", "black", 80, 40, "text");
+    myGamePiece = new component(60, 60, "avatar.png", 400, 590, "image", 0);
+    myScore = new component("30px", "Consolas", "black", 80, 40, "text", 0);
     myGameArea.start();
 }
 
@@ -101,8 +96,9 @@ var myGameArea = {
   }
 }
 
-function component(width, height, color, x, y, type) {
+function component(width, height, color, x, y, type, value) {
     this.gamearea = myGameArea;
+    this.value = value;
     this.type = type;
     if (type == "image") {
       this.image = new Image();
@@ -154,66 +150,47 @@ function component(width, height, color, x, y, type) {
     }
     return crash;
   }
-}
-
-function nextTest(index) {
-  var prevSet = document.getElementById(index)
-  var integerIndex = parseInt(index);
-  var nextSet = document.getElementById(integerIndex+1);
-  if(integerIndex <= 3) {
-  $(prevSet).fadeOut();
-  $(nextSet).delay(400).css("background-color", rgba(0, 0, 0, 0.75));
-  } else {
-    alert("You've defeated all of the tax forms! On to the next enemy!")
+  this.checkStop = function() {
+    if(this.value == 1)
+    {
+      alert("correct!");
+      myScore.text = "SCORE: " + myGameArea.frameNo + 100;
+      window.location.href = "game2-2.html";
+      myGamePiece.x=10;
+    }
+    else {
+      alert("wrong :(")
+      myGamePiece.x=10;
+    }
   }
-}
-
-function checkStop(val, index) {
-  if(this.document.getElementById("choice") == val)
-  {
-    alert("correct!");
-    myScore.text = "SCORE: " + myGameArea.frameNo + 100;
-    nextTest(index + 1);
-    myGameArea.stop();
-  }
-  else {
-    alert("wrong :(");
-    myGamePiece.x=10;
-  }
-  return;
 }
 
 function updateGameArea() {
     var x, y;
-    // var a = document.getElementsByClassName("question-set");
-    // var b = a[1];
-    // alert(b);
     for (i = 0; i < myObstacles1.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles1[i])) {
-            checkStop(1);
+        if (myGamePiece.crashWith(myObstacles1[i]) == true) {
+            myObstacles1[i].checkStop();
         }
     }
     for (i = 0; i < myObstacles2.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles2[i])) {
-            checkStop(2);
+        if (myGamePiece.crashWith(myObstacles2[i]) == true) {
+            myObstacles2[i].checkStop();
         }
     }
     for (i = 0; i < myObstacles3.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles3[i])) {
-            myGameArea.stop();
-            return;
+        if (myGamePiece.crashWith(myObstacles3[i]) == true) {
+            myObstacles3[i].checkStop();
         }
     }
     for (i = 0; i < myObstacles4.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles4[i])) {
-            myGameArea.stop();
-            return;
+        if (myGamePiece.crashWith(myObstacles4[i]) == true) {
+            myObstacles4[i].checkStop();
         }
     }
 
     if(myGamePiece.x <= 0)
     {
-      myGamePiece.x = 50;
+      myGamePiece.x = 1300;
     }
     else if (myGamePiece.x >= 1350)
     {
@@ -229,10 +206,10 @@ function updateGameArea() {
      if (myGameArea.frameNo == 1 || everyinterval(150)) {
          x = myGameArea.canvas.width;
          y = myGameArea.canvas.height - 200;
-         myObstacles1.push(new component(60, 60, "1040.png", 200, 100, "image"));
-         myObstacles2.push(new component(60, 60, "1099.png", 500, 100, "image"));
-         myObstacles3.push(new component(60, 60, "w2.png", 800, 100, "image"));
-         myObstacles4.push(new component(60, 60, "w4.png", 1100, 100, "image"));
+         myObstacles1.push(new component(60, 60, "1040.png", 200, 100, "image", 0));
+         myObstacles2.push(new component(60, 60, "1099.png", 500, 100, "image", 0));
+         myObstacles3.push(new component(60, 60, "w2.png", 800, 100, "image", 1));
+         myObstacles4.push(new component(60, 60, "w4.png", 1100, 100, "image", 0));
      }
      for (i = 0; i < myObstacles1.length; i += 1) {
          myObstacles1[i].y +=4;
