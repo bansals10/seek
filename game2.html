@@ -3,7 +3,6 @@
 <head>
   <title> Catch the form! </title>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
 
@@ -45,16 +44,6 @@ canvas {
   <div class="question-set" id=1 style="display: block;">
     <h2 class="question">What document contains information about yearly income and withheld taxes?</h2>
   </div>
-
-  <div class="question-set" id=2>
-    <h2 class="question">2. Under what income do you not have to file taxes?</h2>
-    <div class="choices">
-      <div class="choice" id=0>a) $6,000</div>
-      <div class="choice" id=1>b) $12,000</div>
-      <div class="choice" id=0>c) $18,000</div>
-      <div class="choice" id=0>d) $24,000</div>
-    </div>
-  </div>
 </div>
 
 <script>
@@ -67,7 +56,7 @@ var myObstacles4 = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = new component(60, 60, "avatar.png", 400, 590, "image", 0);
+    myGamePiece = new component(60, 60, "pixil-frame-0.png", 400, 590, "image", 0);
     myScore = new component("30px", "Consolas", "black", 80, 40, "text", 0);
     myGameArea.start();
 }
