@@ -5,8 +5,7 @@
     <title>PLAY</title>
     <link href="SEEK.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-
-    <img src="play1.png" id="background">
+    <img src="play1.png" class="background" id="play-background">
     <nav>
       <ul>
         <li><a href="home.html">Home</a></li>
@@ -117,7 +116,7 @@
     <a href="game2.html"><div id="tax-defeat">
       <p>You've defeated all of the tax forms!</p>
       <p>On to the next enemy!</p>
-      </div></a>
+    </div></a>
 
     <script>
     var minutesLabel = document.getElementById("minutes");
@@ -134,7 +133,7 @@
       $(prevSet).fadeOut();
       $(nextSet).delay(400).fadeIn();
       } else {
-        $(#tax-defeat).toggle();
+        $("#tax-defeat").toggle();
       }
     }
 
@@ -143,10 +142,9 @@
         var index = $(this).parent().parent().attr('id');
         alert("correct!");
         nextTest(index);
-        minutesLabel = 00;
-        secondsLabel = 00;
-        totalSeconds = 0;
-        setInterval(setTime,1000);
+        document.getElementById("minutes").innerHTML = 00
+        document.getElementById("seconds").innerHTML = 00
+        totalSeconds = 0
       } else {
         alert("wrong :(");
      }
