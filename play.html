@@ -5,7 +5,6 @@
     <meta charset= "utf-8">
     <title>PLAY</title>
     <link href="SEEK.css" type="text/css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 
   </head>
@@ -119,7 +118,7 @@
 
       if(integerIndex <= 9) {
       $(prevSet).fadeOut();
-      $(nextSet).delay(400).css("background-color", "rgba(0, 0, 0, 0.75)");
+      $(nextSet).delay(400).css("background-color", rgba(0, 0, 0, 0.75));
       } else {
         alert("You've defeated all of the tax forms! On to the next enemy!")
       }
