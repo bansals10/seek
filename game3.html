@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game 3</title>
+</head>
+<body>
+  <style>
+  body {
+    text-align: center;
+    margin-top: 100px;
+  }
+  input {
+    padding: 10px;
+  }
+  #form1 {
+    margin: 30px;
+    font-size: 20px;
+  }
+  #prompt {
+    font-size: 30px;
+    font-weight: 200px;
+  }
+  #uniq {
+    margin: 10px;
+  }
+
+  .button {
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #333;
+  }
+
+
+  </style>
+  <span id="prompt">
+    Is my credit score good or bad?
+  </span>
+  <form id="form1">
+    Enter a FICO credit score: <br>
+    <input type="number" name="creditScore" id="uniq"/>
+  <input type="button" class= "button" id="submitbutton" value="Submit"> <!--add onclick="play()" -->
+</form>
+<p id="text"> </p>
+  <script>
+    const form1 = document.getElementById('form1')
+    const button = document.getElementById('submitbutton');
+    form1.addEventListener('submit', printresult);
+    button.addEventListener('click', printresult);
+
+    function printresult(event) {
+      event.preventDefault();
+      var n = document.getElementById('uniq').value;
+      if (n < 300 || n > 850) {
+        document.getElementById("text").innerHTML = n + " Please try again. A credit score is only possible within the range 300-850.";
+      } else if (n > 300 && n < 600) {
+        document.getElementById("text").innerHTML = n + " is a very bad score. Work on improving your credit score by paying off bills on time.";
+      } else if (n < 650) {
+        document.getElementById("text").innerHTML = n + " is a poor score. Make sure to pay off debts instead of moving it around.";
+      } else if (n < 700) {
+        document.getElementById("text").innerHTML = n + " is a fair score. You could improve by paying bills consistently on time.";
+      } else if (n < 750) {
+        document.getElementById("text").innerHTML = n + " is a good score. Try to pay off credit sooner than later.";
+      } else if (n < 800) {
+        document.getElementById("text").innerHTML = n + " is a very good score. There is some room for improvement but you're doing a great job so far.";
+      } else if (n <= 850) {
+        document.getElementById("text").innerHTML = n + " is an excellent score! Keep it up!";
+      } else {
+        document.getElementById("text").innerHTML = n + " Invalid input.";
+      }
+    }
+  </script>
+</body>
+</html>
