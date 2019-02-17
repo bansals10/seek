@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset= "utf-8">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style>
+    .top-left {
+        position: absolute;
+        top: 100px;
+        left: 500px;
+        color: white;
+        font-size: 35px;
+        font-family: 'Press Start 2P', sans-serif;
+      }
+    body {
+            margin:0px;
+            background-image: url("pixil-frame.png");
+            background-repeat: no-repeat;
+            background-size: 1500px 800px;
+            background-attachment: fixed;
+        }
+        p{
+          position: absolute;
+          top: 150px;
+          left: 450px;
+          color: white;
+          font-size: 20px;
+          font-family: 'Press Start 2P', sans-serif;
+        }
+    #mon1 {
+      position: absolute;
+      left: 300px;
+      top: 400px;
+        }
+
+    #mon2 {
+      position: absolute;
+      left: 1100px;
+      top: 300px;
+        }
+
+    #mon3 {
+      position: absolute;
+      left: 1100px;
+      top: 500px;
+        }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+      li {
+        float: left;
+      }
+      li a {
+        font-family: 'Press Start 2P', sans-serif;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 20px;
+        text-decoration: none;
+      }
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+      .active {
+        background-color: #ffc100;
+      }
+    </style>
+  </head>
+
+  <script>
+  function imageClick(url) {
+    window.location = url;
+  }
+  </script>
+
+  <body>
+    <div class="top-left">S.E.E.K. </div>
+    <p>Financial Literacy</p>
+    <div class = "monster">
+      <img id = "mon1" src = "taxes.gif" alt = "mon1" width = "200" height = "200"
+      onclick="imageClick('./play.html')"></button>
+      <img id = "mon2" src = "taxes.gif" alt = "mon2" width = "200" height = "200"></button>
+      <img id = "mon3" src = "taxes.gif" alt = "mon3" width = "200" height = "200"></button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="./home.html">Home</a></li>
+        <li><a class="active" href="./learn.html">Learn</a></li>
+        <li style="float:right"><a href="./account.html">Account Info</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>

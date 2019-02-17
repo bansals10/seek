@@ -11,8 +11,25 @@
       font-family: 'Montserrat';
     }
 
+    #credit {
+      background-color: #FFFDF7;
+    }
+
+    #tax {
+      background-color: #F8FBFE;
+    }
+
+    #loans {
+      background-color: #FFF9FF;
+    }
+
     .content {
-      margin: 120px 50px;
+      margin-top: 80px;
+    }
+
+    .ed {
+      padding: 30px 50px 30px 50px;
+      margin-left: 100px;
     }
 
     .topic {
@@ -26,9 +43,48 @@
       margin: 25px 0 25px 0;
     }
 
+    .content li {
+      margin: 10px;
+    }
+
+#sidebar {
+  margin-top: 50px;
+}
+
+#sidebar li {
+  float: none;
+
+}
+
+  #sidebar  ul {
+  margin-top: 90px;
+  padding: 0;
+  width: 100px;
+  background-color: transparent;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+#sidebar li a {
+  color: #000;
+  padding: 10px 16px;
+  text-decoration: none;
+  border-right: solid 1px black;
+
+}
+
+#sidebar li a:hover {
+  background-color: transparent;
+  color: gray;
+}
+
+    /*below is already contained in SEEK.css*/
+
     nav ul {
         list-style-type: none;
         margin: 0;
+        margin-bottom: 50px;
         padding: 0;
         overflow: hidden;
         background-color: #333;
@@ -49,6 +105,14 @@
         text-decoration: none;
       }
 
+      nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 20px;
+        text-decoration: none;
+      }
+
       nav li a:hover:not(.active) {
         background-color: #111;
       }
@@ -57,11 +121,6 @@
         background-color: #ffc100;
       }
 
-      .content li {
-        margin: 10px;
-      }
-
-      .topic
     </style>
     <script>
       function set_user_choice(choice)
@@ -85,7 +144,14 @@
 
 
   <body>
-    <nav position="fixed">
+    <nav id= "sidebar">
+      <ul>
+        <li><a href="#credit">Credit</a></li>
+        <li><a href="#tax">Tax</a></li>
+        <li><a href="#loans">Loans</a></li>
+      </ul>
+    </nav>
+    <nav>
       <ul>
         <li><a href="./SEEK.html">Home</a></li>
         <li><a href="./play.html">Play</a></li>
@@ -93,9 +159,10 @@
         <li style="float:right"><a href="./account.html">User</a></li>
       </ul>
     </nav>
+    <!-- vertical sidebar navigator-->
     <div class="content">
       <!-- topic 1 -->
-      <div id="part1" class="ed">
+      <div id="credit" class="ed">
         <span class= "topic">Credit</span> <!-- title-->
         <p class= "info">From Wikipedia: Credit (from Latin credit, "(he/she/it) believes") is the trust which allows one party to provide money or resources to another party wherein the second party does not reimburse the first party immediately (thereby generating a debt), but promises either to repay or return those resources (or other materials of equal value) at a later date.[1] In other words, credit is a method of making reciprocity formal, legally enforceable, and extensible to a large group of unrelated people.</p> <!-- short intro -->
         <p class= "question">Why is credit important?</p>
@@ -118,11 +185,34 @@
         </ul>
       </div>
       <!-- topic 2 -->
-      <div id="part1" class="ed">
-        <span class= "topic">Credit</span>
+      <div id="tax" class="ed">
+        <span class= "topic">Tax</span>
         <p class= "info">From Wikipedia: Credit (from Latin credit, "(he/she/it) believes") is the trust which allows one party to provide money or resources to another party wherein the second party does not reimburse the first party immediately (thereby generating a debt), but promises either to repay or return those resources (or other materials of equal value) at a later date.[1] In other words, credit is a method of making reciprocity formal, legally enforceable, and extensible to a large group of unrelated people.</p>
         <p class= "question">Why is credit important?</p>
         <ul>
+          <li>
+            It affects your ability to borrow money
+          </li>
+          <li>
+            It is not good.
+          </li>
+        </ul>
+        <p class= "question">Why is credit important?</p>
+        <ul>
+          <li>
+            It affects your ability to borrow money
+          </li>
+          <li>
+            It is not good.
+          </li>
+        </ul>
+      </div>
+      <!-- topic 3 -->
+      <div id="loans" class="ed">
+        <span class= "topic">Loans</span> <!-- title-->
+        <p class= "info">From Wikipedia: Credit (from Latin credit, "(he/she/it) believes") is the trust which allows one party to provide money or resources to another party wherein the second party does not reimburse the first party immediately (thereby generating a debt), but promises either to repay or return those resources (or other materials of equal value) at a later date.[1] In other words, credit is a method of making reciprocity formal, legally enforceable, and extensible to a large group of unrelated people.</p> <!-- short intro -->
+        <p class= "question">Why is credit important?</p>
+        <ul>  <!-- bullet list -->
           <li>
             It affects your ability to borrow money
           </li>
