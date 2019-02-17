@@ -5,11 +5,11 @@
     <title>PLAY</title>
     <link href="SEEK.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-    <img src="play1.png" class="background" id="play-background">
+    <img src="./img/game1_background.png" class="background" id="play-background">
     <nav>
       <ul>
         <li><a href="home.html">Home</a></li>
-        <li><a class="active" href="play.html">Play</a></li>
+        <li><a class="active" href="game1.html">Play</a></li>
         <li><a href="learn.html">Learn</a></li>
       </ul>
     </nav>
@@ -71,26 +71,6 @@
       </div>
 
       <div class="question-set" id=6>
-        <h2 class="testQ">What document contains information about yearly income and withheld taxes?</h2>
-        <div class="choices">
-          <div class="choice" id=1>a) W2</div>
-          <div class="choice" id=0>b) W4</div>
-          <div class="choice" id=0>c) 1040A</div>
-          <div class="choice" id=0>d) 1099</div>
-        </div>
-      </div>
-
-      <div class="question-set" id=7>
-        <h2 class="testQ">Under what income do you not have to file taxes?</h2>
-        <div class="choices">
-          <div class="choice" id=0>a) $6,000</div>
-          <div class="choice" id=1>b) $12,000</div>
-          <div class="choice" id=0>c) $18,000</div>
-          <div class="choice" id=0>d) $24,000</div>
-        </div>
-      </div>
-
-      <div class="question-set" id=8>
         <h2 class="testQ">8. What type of bank account do you use to deposit and withdraw money in everyday life?</h2>
         <div class="choices">
           <div class="choice" id=0>a) Savings account</div>
@@ -100,7 +80,7 @@
         </div>
       </div>
 
-      <div class="question-set" id=9>
+      <div class="question-set" id=7>
         <h2 class="testQ">What is a 401K plan?</h2>
         <div class="choices">
           <div class="choice" id=0>a) A plan to help pay for your college education</div>
@@ -128,7 +108,7 @@
       var integerIndex = parseInt(index);
       var nextSet = document.getElementById(integerIndex+1);
 
-      if(integerIndex <= 9) {
+      if(integerIndex <= 7) {
       $(prevSet).fadeOut();
       $(nextSet).delay(400).fadeIn();
       } else {

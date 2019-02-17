@@ -56,7 +56,7 @@ var myObstacles4 = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = new component(60, 60, "pixil-frame-0.png", 400, 590, "image", 0);
+    myGamePiece = new component(60, 60, "./img/game2_avatar.png", 400, 590, "image", 0);
     myScore = new component("30px", "Consolas", "black", 80, 40, "text", 0);
     myGameArea.start();
 }
@@ -195,10 +195,10 @@ function updateGameArea() {
      if (myGameArea.frameNo == 1 || everyinterval(150)) {
          x = myGameArea.canvas.width;
          y = myGameArea.canvas.height - 200;
-         myObstacles1.push(new component(60, 60, "1040.png", 200, 100, "image", 0));
-         myObstacles2.push(new component(60, 60, "1099.png", 500, 100, "image", 0));
-         myObstacles3.push(new component(60, 60, "w2.png", 800, 100, "image", 1));
-         myObstacles4.push(new component(60, 60, "w4.png", 1100, 100, "image", 0));
+         myObstacles1.push(new component(60, 60, "./img/forms/1040.png", 200, 100, "image", 0));
+         myObstacles2.push(new component(60, 60, "./img/forms/1099.png", 500, 100, "image", 0));
+         myObstacles3.push(new component(60, 60, "./img/forms/w2.png", 800, 100, "image", 1));
+         myObstacles4.push(new component(60, 60, "./img/forms/w4.png", 1100, 100, "image", 0));
      }
      for (i = 0; i < myObstacles1.length; i += 1) {
          myObstacles1[i].y +=4;
