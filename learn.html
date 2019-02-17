@@ -4,9 +4,29 @@
     <meta charset= "utf-8">
     <title>Learn</title>
     <link href="SEEK.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <style>
-    body {margin:0;}
-    ul {
+    body {
+      margin:0;
+      font-family: 'Montserrat';
+    }
+
+    .content {
+      margin: 120px 50px;
+    }
+
+    .topic {
+      font-size: 40px;
+      font-weight: 300px;
+    }
+
+    .question {
+      font-style: italic;
+      font-weight: bold;
+      margin: 25px 0 25px 0;
+    }
+
+    nav ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -17,11 +37,11 @@
         width: 100%;
       }
 
-      li {
+      nav li {
         float: left;
       }
 
-      li a {
+      nav li a {
         display: block;
         color: white;
         text-align: center;
@@ -29,12 +49,16 @@
         text-decoration: none;
       }
 
-      li a:hover:not(.active) {
+      nav li a:hover:not(.active) {
         background-color: #111;
       }
 
       .active {
         background-color: #ffc100;
+      }
+
+      .content li {
+        margin: 10px;
       }
     </style>
     <script>
@@ -59,7 +83,7 @@
 
 
   <body>
-    <nav>
+    <nav position="fixed">
       <ul>
         <li><a href="./SEEK.html">Home</a></li>
         <li><a href="./play.html">Play</a></li>
@@ -67,5 +91,53 @@
         <li style="float:right"><a href="./account.html">User</a></li>
       </ul>
     </nav>
+    <div class="content">
+      <!-- topic 1 -->
+      <div id="part1" class="ed">
+        <span class= "topic">Credit</span> <!-- title-->
+        <p class= "info">From Wikipedia: Credit (from Latin credit, "(he/she/it) believes") is the trust which allows one party to provide money or resources to another party wherein the second party does not reimburse the first party immediately (thereby generating a debt), but promises either to repay or return those resources (or other materials of equal value) at a later date.[1] In other words, credit is a method of making reciprocity formal, legally enforceable, and extensible to a large group of unrelated people.</p> <!-- short intro -->
+        <p class= "question">Why is credit important?</p>
+        <ul>  <!-- bullet list -->
+          <li>
+            It affects your ability to borrow money
+          </li>
+          <li>
+            It is not good.
+          </li>
+        </ul>
+        <p class= "question">Why is credit important?</p>
+        <ul>
+          <li>
+            It affects your ability to borrow money
+          </li>
+          <li>
+            It is not good.
+          </li>
+        </ul>
+      </div>
+      <!-- topic 2 -->
+      <div id="part1" class="ed">
+        <span class= "topic">Credit</span>
+        <p class= "info">From Wikipedia: Credit (from Latin credit, "(he/she/it) believes") is the trust which allows one party to provide money or resources to another party wherein the second party does not reimburse the first party immediately (thereby generating a debt), but promises either to repay or return those resources (or other materials of equal value) at a later date.[1] In other words, credit is a method of making reciprocity formal, legally enforceable, and extensible to a large group of unrelated people.</p>
+        <p class= "question">Why is credit important?</p>
+        <ul>
+          <li>
+            It affects your ability to borrow money
+          </li>
+          <li>
+            It is not good.
+          </li>
+        </ul>
+        <p class= "question">Why is credit important?</p>
+        <ul>
+          <li>
+            It affects your ability to borrow money
+          </li>
+          <li>
+            It is not good.
+          </li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
