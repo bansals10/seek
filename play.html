@@ -3,41 +3,19 @@
   <head>
     <meta charset= "utf-8">
     <title>PLAY</title>
-    <!--<link href="style.css" type="text/css" rel="stylesheet">-->
+    <link href="SEEK.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 
-    <style>
-      .question-set{
-        width: 30%;
-        position: fixed;
-        left: 40px;
-        top:100px;
-        padding: 20px;
-        background-color: black;
-        display: none;
-        color:white;
-      }
-
-      .multi-choice h2 {font-family: 'Press Start 2P', sans-serif;}
-
-      .choice {
-        border: 1px solid black;
-        cursor: pointer;
-        padding: 10px;
-        margin: 20px;
-        color: white;
-        font-family: sans-serif;
-      }
-      .choice:hover { color: #E80C7A; }
-
-    </style>
   </head>
 
   <body>
+    <img src="file:///Users/elaine/Downloads/pixil-frame0.png" id="play-background">
     <div class="multi-choice">
-      <div class="question-set" id=1 style="display: block; opacity: 0.5;">
-        <label id="minutes">00</label>:<label id="seconds">00</label>
+      <div class="timer">
+      <label id="minutes">00</label>:<label id="seconds">00</label>        
+      </div>
+      <div class="question-set" id=1 style="display: block;">
         <h2 class="question">question 1</h2>
         <div class="choices">
           <div class="choice" id=1>a</div>
@@ -48,7 +26,6 @@
       </div>
 
       <div class="question-set" id=2>
-        <label id="minutes">00</label>:<label id="seconds">00</label>
         <h2 class="question">question 2</h2>
         <div class="choices">
           <div class="choice" id=1>a</div>
@@ -59,6 +36,10 @@
       </div>
     </div>
     <script>
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
 
     function nextTest(index) {
       var prevSet = document.getElementById(index)
@@ -66,7 +47,7 @@
       var nextSet = document.getElementById(integerIndex+1);
       //if(integerIndex == ) {} else {}
       $(prevSet).fadeOut();
-      $(nextSet).fadeTo(400, 0.5);
+      $(nextSet).delay(400).fadeTo(400, 0.5);
     }
 
     $(".choice").click(function(event) {
@@ -74,19 +55,15 @@
         var index = $(this).parent().parent().attr('id');
         alert("correct!");
         nextTest(index);
+        minutesLabel = 00;
+        secondsLabel = 00;
+        totalSeconds = 0
+        setInterval(setTime,1000);
       } else {
         alert("wrong :(");
      }
     });
 
-
-
-
-    //TIMER
-    var minutesLabel = document.getElementById("minutes");
-    var secondsLabel = document.getElementById("seconds");
-    var totalSeconds = 0;
-    setInterval(setTime, 1000);
 
     function setTime() {
       ++totalSeconds;
