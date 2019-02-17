@@ -10,28 +10,98 @@
   </head>
 
   <body>
-    <img src="file:///Users/elaine/Downloads/pixil-frame0.png" id="play-background">
+    <img src="file:///Users/elaine/Downloads/pixil-frame.png" id="play-background">
     <div class="multi-choice">
       <div class="timer">
-      <label id="minutes">00</label>:<label id="seconds">00</label>        
+      <label id="minutes">00</label>:<label id="seconds">00</label>
       </div>
       <div class="question-set" id=1 style="display: block;">
-        <h2 class="question">question 1</h2>
+        <h2 class="question">1. What is a mortgage?</h2>
         <div class="choices">
-          <div class="choice" id=1>a</div>
-          <div class="choice" id=0>b</div>
-          <div class="choice" id=0>c</div>
-          <div class="choice" id=0>d</div>
+          <div class="choice" id=0>a) A loan to help pay off the hundreds of thousands you owe in student debt</div>
+          <div class="choice" id=0>b) A retirement plan so you can live the rest of your life in peace, isolated from the rest of the world</div>
+          <div class="choice" id=1>c) A special loan to buy a house</div>
+          <div class="choice" id=0>d) A contract to rent an apartment because you can’t afford a house</div>
         </div>
       </div>
 
       <div class="question-set" id=2>
-        <h2 class="question">question 2</h2>
+        <h2 class="question">2. Why is a good credit score important?</h2>
         <div class="choices">
-          <div class="choice" id=1>a</div>
-          <div class="choice" id=0>b</div>
-          <div class="choice" id=0>c</div>
-          <div class="choice" id=0>d</div>
+          <div class="choice" id=0>a) Credit scores are a scam by the US government in order to swamp everyone in debt</div>
+          <div class="choice" id=0>b) Having a good credit score will give you a tax deduction</div>
+          <div class="choice" id=0>c) So you can brag to all of your friends about your amazing trustworthiness and convince them to let you manage their money</div>
+          <div class="choice" id=1>d) So you can secure a loan and/or a mortgage should you need one</div>
+        </div>
+      </div>
+
+      <div class="question-set" id=3>
+        <h2 class="question">3. As a poor college student, what type of tax is most injurious to your wallet?</h2>
+        <div class="choices">
+          <div class="choice" id=0>a) Progressive tax</div>
+          <div class="choice" id=1>b) Regressive tax</div>
+          <div class="choice" id=0>c) Proportional tax</div>
+          <div class="choice" id=0>d) None, I love taxes!</div>
+        </div>
+      </div>
+
+      <div class="question-set" id=4>
+        <h2 class="question">4. What is important to consider before taking out a loan?</h2>
+        <div class="choices">
+          <div class="choice" id=0>a) Picking a loan with a high interest rate, so the bank will pay you money</div>
+          <div class="choice" id=0>b) Borrowing money that you can’t pay back, because debt is fun</div>
+          <div class="choice" id=1>c) Ensuring you can pay each installment on time, because debt is not fun</div>
+          <div class="choice" id=0>d) All of the above</div>
+        </div>
+      </div>
+
+      <div class="question-set" id=5>
+        <h2 class="question">5. Before filing taxes, what should you do?</h2>
+        <div class="choices">
+          <div class="choice" id=0>a) Call your parents to ask if you are a dependant under their name</div>
+          <div class="choice" id=0>b) Find your W2 and 1098-T/1099 papers</div>
+          <div class="choice" id=0>c) Pick out which 1040 form you prefer to use</div>
+          <div class="choice" id=1>d) All of the above</div>
+        </div>
+      </div>
+
+      <div class="question-set" id=6>
+        <h2 class="question">6. What document contains information about yearly income and withheld taxes?</h2>
+        <div class="choices">
+          <div class="choice" id=1>a) W2</div>
+          <div class="choice" id=0>b) W4</div>
+          <div class="choice" id=0>c) 1040A</div>
+          <div class="choice" id=0>d) 1099</div>
+        </div>
+      </div>
+
+      <div class="question-set" id=7>
+        <h2 class="question">7. Under what income do you not have to file taxes?</h2>
+        <div class="choices">
+          <div class="choice" id=0>a) $6,000</div>
+          <div class="choice" id=1>b) $12,000</div>
+          <div class="choice" id=0>c) $18,000</div>
+          <div class="choice" id=0>d) $24,000</div>
+        </div>
+      </div>
+
+      <div class="question-set" id=8>
+        <h2 class="question">8. What type of bank account do you use to deposit and withdraw money in everyday life?</h2>
+        <div class="choices">
+          <div class="choice" id=0>a) Savings account</div>
+          <div class="choice" id=1>b) Checking account</div>
+          <div class="choice" id=0>c) Money market account</div>
+          <div class="choice" id=0>d) Retirement account</div>
+        </div>
+      </div>
+
+      <div class="question-set" id=9>
+        <h2 class="question">9. What is a 401K plan?</h2>
+        <div class="choices">
+          <div class="choice" id=0>a) A plan to help pay for your college education</div>
+          <div class="choice" id=0>b) A loan to pay for a house</div>
+          <div class="choice" id=1>c) We didn’t talk about this...</div>
+          <div class="choice" id=0>d) A method to boost your credit score</div>
         </div>
       </div>
     </div>
@@ -45,9 +115,13 @@
       var prevSet = document.getElementById(index)
       var integerIndex = parseInt(index);
       var nextSet = document.getElementById(integerIndex+1);
-      //if(integerIndex == ) {} else {}
+
+      if(integerIndex <= 9) {
       $(prevSet).fadeOut();
-      $(nextSet).delay(400).fadeTo(400, 0.5);
+      $(nextSet).delay(400).css("background-color", "rgba(0, 0, 0, 0.75)");
+      } else {
+        alert("You've defeated all of the tax forms! On to the next enemy!")
+      }
     }
 
     $(".choice").click(function(event) {
