@@ -1,0 +1,57 @@
+body {
+  margin:0;
+  font-family: 'Montserrat';
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  nav li {
+    float: left;
+  }
+
+  nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+  }
+
+  nav li a:hover:not(.active) {
+    background-color: #111;
+  }
+
+  .active {
+    background-color: #ffc100;
+  }
+
+  .question-set{
+    width: 30%;
+    position: fixed;
+    left: 40px;
+    top:100px;
+    padding: 20px;
+    background-color: black;
+    display: none;
+    color:white;
+  }
+
+  .multi-choice h2 {font-family: 'Press Start 2P', sans-serif;}
+
+  .choice {
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 10px;
+    margin: 20px;
+    color: white;
+    font-family: sans-serif;
+  }
+  .choice:hover { color: #E80C7A; }
