@@ -7,23 +7,61 @@
 <style>
 
 canvas {
+    top: 100px;
     border:1px solid #d3d3d3;
     background-color: lightblue;
+
 }
 
 .top-left {
   position: absolute;
-  top: 100px;
-  left: 350px;
-  color: white;
-  font-size: 30px;
+  top: 30px;
+  left: 320px;
+  color: black;
+  font-size: 40px;
 	font-family: 'Press Start 2P';
+}
+
+.multi-choice {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  color: black;
+  font-size: 10px;
+	font-family: 'Press Start 2P';
+}
+
+.question-set{
+  display: none;
 }
 
 </style>
 </head>
 <body onload="startGame()">
-<div class="top-left">Catch the right form!</div><br>
+<div class="top-left">Catch the right form!</div>
+
+<div class="multi-choice">
+  <div class="question-set" id=1 style="display: block;">
+    <h2 class="question">1. What document contains information about yearly income and withheld taxes?</h2>
+    <div class="choices">
+      <div class="choice" id=1>a) W2</div>
+      <div class="choice" id=0>b) W4</div>
+      <div class="choice" id=0>c) 1040A</div>
+      <div class="choice" id=0>d) 1099</div>
+    </div>
+  </div>
+
+  <div class="question-set" id=2>
+    <h2 class="question">2. Under what income do you not have to file taxes?</h2>
+    <div class="choices">
+      <div class="choice" id=0>a) $6,000</div>
+      <div class="choice" id=1>b) $12,000</div>
+      <div class="choice" id=0>c) $18,000</div>
+      <div class="choice" id=0>d) $24,000</div>
+    </div>
+  </div>
+</div>
+
 <script>
 
 var myGamePiece, myEnemyPiece;
@@ -31,18 +69,19 @@ var myObstacles1 = [];
 var myObstacles2 = [];
 var myObstacles3 = [];
 var myObstacles4 = [];
-var myObstacles5 = [];
+var myScore;
 
 function startGame() {
-    myGamePiece = new component(60, 60, "monster.png", 400, 620, "image");
+    myGamePiece = new component(60, 60, "avatar.png", 400, 590, "image");
+    myScore = new component("30px", "Consolas", "black", 80, 40, "text");
     myGameArea.start();
 }
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 1225;
-        this.canvas.height = 700;
+        this.canvas.width = 1350;
+        this.canvas.height = 650;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -82,7 +121,13 @@ function component(width, height, color, x, y, type) {
                 this.x,
                 this.y,
                 this.width, this.height);
-        } else {
+        }
+        else if (this.type == "text") {
+          ctx.font = this.width + " " + this.height;
+          ctx.fillStyle = color;
+          ctx.fillText(this.text, this.x, this.y);
+        }
+        else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
@@ -111,18 +156,46 @@ function component(width, height, color, x, y, type) {
   }
 }
 
+function nextTest(index) {
+  var prevSet = document.getElementById(index)
+  var integerIndex = parseInt(index);
+  var nextSet = document.getElementById(integerIndex+1);
+  if(integerIndex <= 3) {
+  $(prevSet).fadeOut();
+  $(nextSet).delay(400).css("background-color", rgba(0, 0, 0, 0.75));
+  } else {
+    alert("You've defeated all of the tax forms! On to the next enemy!")
+  }
+}
+
+function checkStop(val, index) {
+  if(this.document.getElementById("choice") == val)
+  {
+    alert("correct!");
+    myScore.text = "SCORE: " + myGameArea.frameNo + 100;
+    nextTest(index + 1);
+    myGameArea.stop();
+  }
+  else {
+    alert("wrong :(");
+    myGamePiece.x=10;
+  }
+  return;
+}
+
 function updateGameArea() {
     var x, y;
+    // var a = document.getElementsByClassName("question-set");
+    // var b = a[1];
+    // alert(b);
     for (i = 0; i < myObstacles1.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles1[i])) {
-            myGameArea.stop();
-            return;
+            checkStop(1);
         }
     }
     for (i = 0; i < myObstacles2.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles2[i])) {
-            myGameArea.stop();
-            return;
+            checkStop(2);
         }
     }
     for (i = 0; i < myObstacles3.length; i += 1) {
@@ -137,14 +210,18 @@ function updateGameArea() {
             return;
         }
     }
-    for (i = 0; i < myObstacles5.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles5[i])) {
-            myGameArea.stop();
-            return;
-        }
+
+    if(myGamePiece.x <= 0)
+    {
+      myGamePiece.x = 50;
+    }
+    else if (myGamePiece.x >= 1350)
+    {
+      myGamePiece.x = 50;
     }
 
     myGameArea.clear();
+    myGameArea.frameNo += 1;
     myGamePiece.speedX = 0;
     myGamePiece.speedY = 0;
 
@@ -152,30 +229,29 @@ function updateGameArea() {
      if (myGameArea.frameNo == 1 || everyinterval(150)) {
          x = myGameArea.canvas.width;
          y = myGameArea.canvas.height - 200;
-         myObstacles1.push(new component(60, 60, "taxes.gif", 200, 0, "image"));
-         myObstacles2.push(new component(60, 60, "taxes.gif", 400, 0, "image"));
-         myObstacles3.push(new component(60, 60, "taxes.gif", 600, 0, "image"));
-         myObstacles4.push(new component(60, 60, "taxes.gif", 800, 0, "image"));
-         myObstacles5.push(new component(60, 60, "taxes.gif", 1000, 0, "image"));
+         myObstacles1.push(new component(60, 60, "1040.png", 200, 100, "image"));
+         myObstacles2.push(new component(60, 60, "1099.png", 500, 100, "image"));
+         myObstacles3.push(new component(60, 60, "w2.png", 800, 100, "image"));
+         myObstacles4.push(new component(60, 60, "w4.png", 1100, 100, "image"));
      }
      for (i = 0; i < myObstacles1.length; i += 1) {
-         myObstacles1[i].y +=1.5;
+         myObstacles1[i].y +=4;
          myObstacles1[i].update();
-         myObstacles2[i].y +=2;
+         myObstacles2[i].y +=3;
          myObstacles2[i].update();
-         myObstacles3[i].y +=2.5;
+         myObstacles3[i].y +=4;
          myObstacles3[i].update();
-         myObstacles4[i].y +=3;
+         myObstacles4[i].y +=5;
          myObstacles4[i].update();
-         myObstacles5[i].y +=1;
-         myObstacles5[i].update();
      }
     if (myGameArea.key && myGameArea.key == 37) {
-      myGamePiece.speedX = -5;
+      myGamePiece.speedX = -8;
     }
     if (myGameArea.key && myGameArea.key == 39) {
-      myGamePiece.speedX = 5;
+      myGamePiece.speedX = 8;
     }
+    myScore.text = "SCORE: " + myGameArea.frameNo;
+      myScore.update();
       myGamePiece.newPos();
       myGamePiece.update();
 }
