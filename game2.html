@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title> Catch the form! </title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
 
 canvas {
     border:1px solid #d3d3d3;
-    background-color: blue;
+    background-color: lightblue;
+}
+
+.top-left {
+  position: absolute;
+  top: 100px;
+  left: 350px;
+  color: white;
+  font-size: 30px;
+	font-family: 'Press Start 2P';
 }
 
 </style>
 </head>
 <body onload="startGame()">
+<div class="top-left">Catch the right form!</div><br>
 <script>
 
 var myGamePiece, myEnemyPiece;
+var myObstacles1 = [];
+var myObstacles2 = [];
+var myObstacles3 = [];
+var myObstacles4 = [];
+var myObstacles5 = [];
 
 function startGame() {
-    myGamePiece = new component(30, 30, "monster.png", 225, 240, "image");
-    myEnemyPiece1 = new component(30, 30, "taxes.gif", 100, 0, "image");
-    myEnemyPiece2 = new component(30, 30, "taxes.gif", 200, 0, "image");
-    myEnemyPiece3 = new component(30, 30, "taxes.gif", 300, 0, "image");
+    myGamePiece = new component(60, 60, "monster.png", 400, 620, "image");
     myGameArea.start();
 }
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
+        this.canvas.width = 1225;
+        this.canvas.height = 700;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -98,25 +112,78 @@ function component(width, height, color, x, y, type) {
 }
 
 function updateGameArea() {
+    var x, y;
+    for (i = 0; i < myObstacles1.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles1[i])) {
+            myGameArea.stop();
+            return;
+        }
+    }
+    for (i = 0; i < myObstacles2.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles2[i])) {
+            myGameArea.stop();
+            return;
+        }
+    }
+    for (i = 0; i < myObstacles3.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles3[i])) {
+            myGameArea.stop();
+            return;
+        }
+    }
+    for (i = 0; i < myObstacles4.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles4[i])) {
+            myGameArea.stop();
+            return;
+        }
+    }
+    for (i = 0; i < myObstacles5.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles5[i])) {
+            myGameArea.stop();
+            return;
+        }
+    }
+
     myGameArea.clear();
     myGamePiece.speedX = 0;
     myGamePiece.speedY = 0;
-    myEnemyPiece1.y +=1;
-    myEnemyPiece2.y +=1;
-    myEnemyPiece3.y +=2;
+
+    myGameArea.frameNo += 1;
+     if (myGameArea.frameNo == 1 || everyinterval(150)) {
+         x = myGameArea.canvas.width;
+         y = myGameArea.canvas.height - 200;
+         myObstacles1.push(new component(60, 60, "taxes.gif", 200, 0, "image"));
+         myObstacles2.push(new component(60, 60, "taxes.gif", 400, 0, "image"));
+         myObstacles3.push(new component(60, 60, "taxes.gif", 600, 0, "image"));
+         myObstacles4.push(new component(60, 60, "taxes.gif", 800, 0, "image"));
+         myObstacles5.push(new component(60, 60, "taxes.gif", 1000, 0, "image"));
+     }
+     for (i = 0; i < myObstacles1.length; i += 1) {
+         myObstacles1[i].y +=1.5;
+         myObstacles1[i].update();
+         myObstacles2[i].y +=2;
+         myObstacles2[i].update();
+         myObstacles3[i].y +=2.5;
+         myObstacles3[i].update();
+         myObstacles4[i].y +=3;
+         myObstacles4[i].update();
+         myObstacles5[i].y +=1;
+         myObstacles5[i].update();
+     }
     if (myGameArea.key && myGameArea.key == 37) {
-      myGamePiece.speedX = -3;
+      myGamePiece.speedX = -5;
     }
     if (myGameArea.key && myGameArea.key == 39) {
-      myGamePiece.speedX = 3;
+      myGamePiece.speedX = 5;
     }
-    myGamePiece.newPos();
-    myGamePiece.update();
-    myEnemyPiece1.update();
-    myEnemyPiece2.update();
-    myEnemyPiece3.update();
+      myGamePiece.newPos();
+      myGamePiece.update();
 }
 
+function everyinterval(n) {
+    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+    return false;
+}
 </script>
 
 </body>
